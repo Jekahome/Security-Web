@@ -1059,6 +1059,16 @@ CSS и Javascipt. В этом случае, на экране появится �
 
 [Современные стандарты идентификации: OAuth 2.0, OpenID Connect, WebAuthn](https://habr.com/ru/articles/491116/)
 
+[Настройка авторизации через Google](https://support.webasyst.ru/20629/auth-google/)
+
+[Способы аутентификации](https://deckauth.deck.lc/docs/guide-manual-auth-methods.html)
+
+[Обзор способов и протоколов аутентификации в веб-приложениях](https://habr.com/ru/companies/dataart/articles/262817/)
+
+[Основы OAuth 2.0 и OpenID Connect](https://www.youtube.com/watch?v=yNmN4k-HxWM)
+
 [OAuth2 Google setting](https://console.cloud.google.com/apis/credentials)
 
-[OAuth 2.0 Playground](https://developers.google.com/oauthplayground/)
+[OAuth 2.0 Google Playground](https://developers.google.com/oauthplayground/)
+
+[OAuth 2.0 Google Token parsing](https://oauth2.googleapis.com/tokeninfo?id_token=...)
