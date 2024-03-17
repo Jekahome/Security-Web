@@ -1057,4 +1057,8 @@ CSS и Javascipt. В этом случае, на экране появится �
 
 [8 лучших программ для анализа сетевого трафика](https://rus-linux.net/MyLDP/lvs/sniffers_and_network_analyzers.html)
 
+[Современные стандарты идентификации: OAuth 2.0, OpenID Connect, WebAuthn](https://habr.com/ru/articles/491116/)
+
 [OAuth2 Google setting](https://console.cloud.google.com/apis/credentials)
+
+[OAuth 2.0 Playground](https://developers.google.com/oauthplayground/)
