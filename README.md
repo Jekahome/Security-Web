@@ -1056,3 +1056,5 @@ CSS и Javascipt. В этом случае, на экране появится �
 [Intercept HTTP requests](https://developer.mozilla.org/ru/docs/Mozilla/Add-ons/WebExtensions/Intercept_HTTP_requests)
 
 [8 лучших программ для анализа сетевого трафика](https://rus-linux.net/MyLDP/lvs/sniffers_and_network_analyzers.html)
+
+[OAuth2 Google setting](https://console.cloud.google.com/apis/credentials)
