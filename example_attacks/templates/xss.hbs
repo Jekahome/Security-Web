@@ -1,0 +1,74 @@
+{{#> layout }}
+  {{#*inline "content"}}
+   
+    <h1>{{layout.title}}</h1>
+    <div>
+        <i>Цель: внедрить javascript на страницу </i>
+    </div>
+    <div style="border: 2px solid rgb(255, 251, 0); border-radius: 5px; background-color:rgb(222, 135, 215);width: 970px; padding: 10px">
+        <h3>Input example</h3>
+       
+        <b>url: </b> http://127.0.0.1:8080/xss?message=%3Cscript%3Ealert%281%29%3B%3C%2Fscript%3E
+    </div>
+   
+     
+    <br>
+    <form name="xss_form"  action="/xss" target="_self" method="get" enctype="application/x-www-form-urlencoded" > <!-- text/plain application/x-www-form-urlencoded -->
+        Set message: <input type="text" name="message" value=""><br>
+        <button class="button">Submit</button>
+    </form>
+    <button class="button" id="ajax_submit">AJAX Submit</button>
+
+    <br><br>
+    <div>
+       <b>Your message:</b> <span id="message_value">{{{message}}}</span>
+    </div>
+
+    <br><br>
+    <div>
+        <i>Цель: внедрить javascript в данные файла (поле name) </i>
+    </div>
+    <div style="border: 2px solid rgb(255, 251, 0); border-radius: 5px; background-color:rgb(222, 135, 215);width: 970px; padding: 10px">
+        <h3>Input example</h3>
+        <b>1. Select file download</b><br>
+        <b>2. Open browser dev (F12) and edit html : </b> &lt;input type="file" id="your_img" name="&lt;html>&lt;body>&lt;h1>Hello&lt;/h1>&lt;script>alert(1);&lt;/script>&lt;/html>&lt;/body>"<br>
+        <b>3. Submit</b>
+    </div>
+
+    <br><br>
+    <form name="xss_img"  action="/xss-img" target="_self" method="post" enctype="multipart/form-data">  
+        Add image: <input type="file" id="your_img" name="your_img" accept="image/png, image/gif, image/jpeg" onchange="validateFileType()"/></br>  
+        <button class="button">Submit</button>
+    </form>
+    
+    <script>
+        let ajax_submit = document.getElementById("ajax_submit");
+        ajax_submit.addEventListener('click',function(e){
+            let new_message = document.forms.xss_form.message;
+            if (new_message.value.length > 0){ 
+                async function change_address(msg){
+                    const {data} = await axios.get('http://127.0.0.1:8080/xss-ajax', {
+                        params: {
+                           message: msg
+                        }
+                    });
+                    console.log(data);
+                    document.getElementById("message_value").innerHTML = `${data}`;
+                } 
+                change_address(new_message.value);
+            }
+        });
+
+        function validateFileType(){
+            // Так конечно не работает.
+            // Но перехватив запрос ушедший от браузера но недошедший еще до сервера 
+            // и поменяв поле Content-Disposition, сожем воспользоваться именем файла в своих целях.
+
+            // Content-Disposition: form-data; name=”properties[Artwork file]”
+            // Content-Disposition: form-data; name=”properties[Artwork file<img src=’test’ onmouseover=’alert(2)’>]”;
+
+            // document.getElementById("your_img").value="<script>alert(1);</"+"script>";
+        }
+    </script>
+  {{/inline}}
+{{/layout}}

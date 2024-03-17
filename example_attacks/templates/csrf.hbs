@@ -1,0 +1,43 @@
+{{#> layout }}
+  {{#*inline "content"}}
+   
+    <h1>{{layout.title}}</h1>
+    <div>
+        <i>Цель: воспользоваться cookies залогиненого пользователя. </i><br>
+        <i>TODO: запустить `$ cargo run -p csrf_external_site`</i>
+    </div>
+    
+
+    <br>
+    <form name="set_session"  action="/set-session-form" target="_self" method="post" enctype="application/x-www-form-urlencoded" > <!-- text/plain application/x-www-form-urlencoded -->
+        Set delivery address: <input type="text" name="delivery_address" value=""><br>
+        <button class="button">Submit</button>
+    </form>
+    <button class="button" id="ajax_submit">AJAX Submit</button>
+
+    <br><br>
+    <div>
+       <b>Your delivery address:</b> <span id="session_value">{{delivery_address}}</span>
+    </div>
+    <script>
+        let ajax_submit = document.getElementById("ajax_submit");
+        ajax_submit.addEventListener('click',function(e){
+            let new_delivery_address = document.forms.set_session.delivery_address;
+           
+            if (new_delivery_address.value.length > 0){ 
+                async function new_msg(address){ 
+                    const {data} = await axios.post('/set-session-json', {delivery_address: address}, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });  
+                    new_delivery_address.value = '';
+             
+                    document.getElementById("session_value").innerHTML = `${data}`;                   
+                }
+                new_msg(new_delivery_address.value);
+            }
+        });
+        </script>
+  {{/inline}}
+{{/layout}}

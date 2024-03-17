@@ -1,0 +1,35 @@
+{{#> layout }}
+  {{#*inline "content"}}
+   
+    <h1>{{layout.title}}</h1>
+    <div>
+        <i>Цель: изменить страницу своим HTML.</i>
+    </div>
+    <div style="border: 2px solid rgb(255, 251, 0); border-radius: 5px; background-color:rgb(222, 135, 215);width: 570px; padding: 10px">
+        <h3>Input example:</h3>
+        <b>Name: </b>&lt;h1&gt;Jose Pedro Sanchez&lt;/h1&gt;
+    </div>
+    
+
+    <br>
+    <form action="/html-injection-reflected-get" name="new_msg" target="_self" method="get" enctype="application/x-www-form-urlencoded"> <!-- text/plain application/x-www-form-urlencoded -->
+        Name: <input type="text" name="name" value=""><br>
+        Message: <input type="text" name="msg" value=""><br>
+        <button class="button" id="submit">Submit</button>
+    </form>
+   
+    <div id="for_message">
+        {{#if name}}
+            Gracias por tus comentarios. Querido {{{name}}}.
+        {{/if}}
+    </div>
+    <script>
+        let submit = document.getElementById("submit");
+        submit.addEventListener('click',function(e){
+            console.log(document.forms.new_msg['name'].value,document.forms.new_msg['msg'].value)
+            // alert(`Gracias por tus comentarios. Querido ${document.forms.new_msg['name'].value}`);
+            //document.getElementById("for_message").innerHTML = `Gracias por tus comentarios. Querido ${document.forms.new_msg['name'].value}`;
+        });
+    </script>  
+  {{/inline}}
+{{/layout}}

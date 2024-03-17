@@ -1,8 +1,9 @@
-[package]
-name = "secure_code"
-version = "0.1.0"
-edition = "2021"
+[workspace]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
+members = [
+    "example_attacks", # cargo run -p example_attacks
+    "csrf_external_site", # cargo run -p csrf_external_site
+    "authentication_api_password", # cargo run -p authentication_api_password
+    "authentication_password", # cargo run -p authentication_password
+    "authentication_oauth_2", # cargo run -p authentication_oauth_2
+]

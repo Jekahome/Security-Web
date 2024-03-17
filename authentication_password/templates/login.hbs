@@ -1,0 +1,45 @@
+{{#> layout }}
+  {{#*inline "content"}}
+    <h1>{{layout.title}}</h1>
+    <form name="login">
+        <label for="username">Username: *</label>
+        <input name="username" type="text" pattern="^[\w .,!?]{4,30}$" minlength="4" maxlength="30" required><br>
+        <label for="password">Password: *</label>
+        <input name="password" type="password" pattern="^[\w .,!?]{4,30}$" minlength="4" maxlength="30" required><br>
+    </form>
+    <button id="ajax_submit" class="button">Submit</button>
+    <script>
+        let ajax_submit = document.getElementById("ajax_submit");
+        ajax_submit.addEventListener('click',function(e){
+            let username = document.forms.login.username;
+            let password = document.forms.login.password;
+            if (username.value.length > 4 && password.value.length > 4 && username.value.length < 31 && password.value.length < 31 ){ 
+                async function login(username,password){ 
+                    try {
+                        const response = await axios.post('/login', {username: username, password: password}, {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        });  
+                        if (response.status == 200){
+                            document.location.href = "/user/dashboard"; 
+                        } 
+                    } catch (error) {
+                        if (error.response.data) {
+                            alert(error.response.data); 
+                        }
+                    }
+                }
+                 
+                login(username.value,password.value);
+                username.value = '';
+                password.value = '';
+            }else{
+                alert("login and password must be a minimum of 4 characters and a maximum of 30. \
+                They must consist only of Latin characters and numbers, space and .,!?")
+            }
+        });
+
+    </script>
+  {{/inline}}
+{{/layout}}

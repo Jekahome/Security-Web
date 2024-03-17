@@ -1,0 +1,12 @@
+{{#> layout }}
+  {{#*inline "content"}}
+    <h1>{{layout.title}}</h1>
+    <div>
+        <ul>
+          {{#each pages}}
+            <li><a href="{{@key}}">{{this}}</a> </li>
+          {{/each}}
+        </ul>
+    </div>
+  {{/inline}}
+{{/layout}}

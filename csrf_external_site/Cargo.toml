@@ -1,0 +1,29 @@
+[package]
+name = "csrf_external_site"
+version = "0.1.0"
+edition = "2021"
+ 
+[dependencies]
+actix-web = {version = "4.5", features = ["secure-cookies", "default"]}
+serde = { version = "1.0", features = ["derive"] }
+mime = "0.3"
+serde_json = "*"
+actix-files = "0.6"
+futures = "0.3"
+futures-util = "0.3"
+derive_more = "0.99"
+awc = "3.4"
+actix-http = "3.6"
+actix-session = { version = "0.8", features = ["cookie-session"] }
+ 
+regex = "*"
+reqwest = "0.11"
+
+# log error
+env_logger = "0.11"
+log = "0.4"
+
+# Template engine
+handlebars = { version = "5.1", features = ["dir_source"] }
+
+ 

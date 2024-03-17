@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>{{layout.title}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            background-color:#e7e7e7; 
+            color: black; 
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="/static/axios.min.js">/* https://axios-http.com/docs/post_example */</script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/html-injection-saved">HTML Injection - Saved HTML</a> </li>
+                <li><a href="/html-injection-reflected-get">HTML Injection - Reflected (GET)</a> </li>
+                <li><a href="/http-parameter-pollution">HTTP Parameter Pollution</a> </li>
+                <li><a href="/crlf-injection">CRLF-инъекция</a> </li>
+                <li><a href="/csrf">Cross Site Request Forgery (CSRF-атаки)</a> </li>
+                <li><a href="/xss">Cross Site Scripting Attacks (XSS)</a> </li>
+            </ul>
+            <button class="button" id="clear">Clear DB</button>
+        </div>
+        <div class="main-content">
+            {{> content}}
+        </div>
+    </div>
+    <script>
+        document.getElementById('clear').addEventListener('click',function(e){ 
+            async function clear(){
+                await axios.post('/html-injection-saved-db-clear'); 
+                window.location.reload();
+                window.location.href = "/html-injection-saved";
+            }  
+            clear();
+        });
+    </script>
+  </body>
+</html>
+
+ 

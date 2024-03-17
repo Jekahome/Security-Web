@@ -1,0 +1,13 @@
+{{#> layout }}
+  {{#*inline "content"}}
+    <h1>{{layout.title}}</h1>
+    {{msg_html}}
+    <form action="/registration" method="POST" target="_self" enctype="application/x-www-form-urlencoded">
+        <label for="username">Username: *</label>
+        <input name="username" type="text" pattern="^[\w .,!?]{4,10}$" minlength="4" maxlength="10" required><br>
+        <label for="password">Password: *</label>
+        <input name="password" type="password" pattern="^[\w .,!?]{4,10}$" minlength="4" maxlength="10" required><br>
+        <button class="button">Submit</button>
+    </form>
+  {{/inline}}
+{{/layout}}

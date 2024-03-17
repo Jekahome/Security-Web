@@ -1,0 +1,16 @@
+{{#> layout }}
+  {{#*inline "content"}}
+    <h1>{{layout.title}}</h1>
+     <p>Welcome {{username}}!</p>
+     <p>Available actions:</p>
+     <ul>
+        <li><a href="/user/password">Change password</a></li>
+        <li>
+            <form name="logoutForm" action="/user/logout" method="post">
+              <button class="button">Logout</button>
+            </form>
+        </li>
+    </ul>
+  {{/inline}}
+{{/layout}}
+

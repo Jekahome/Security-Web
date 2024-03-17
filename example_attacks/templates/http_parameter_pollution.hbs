@@ -1,0 +1,23 @@
+{{#> layout }}
+  {{#*inline "content"}}
+   
+    <h1>{{layout.title}}</h1>
+    <div>
+        <i>Цель: перезаписать POST параметр url устанавливаемый предполагаемо системой.</i>
+    </div>
+    <div style="border: 2px solid rgb(255, 251, 0); border-radius: 5px; background-color:rgb(222, 135, 215);width: 570px; padding: 10px">
+        <h3>Input example</h3>
+       
+        <b>Message: </b>hello&amp;url=https://www.google.com/
+    </div>
+     
+    <br>
+    <form action="/http-parameter-pollution" name="new_msg" target="_self" method="post" enctype="text/plain"> <!-- text/plain application/x-www-form-urlencoded -->
+        <input type="text" name="url" value="/http-parameter-pollution" required hidden>
+        Name: <input type="text" name="name" value="Hose" required><br>
+        Message: <input type="text" name="msg" value="" required><br>
+        <button class="button" id="submit">Submit</button>
+    </form>
+      
+  {{/inline}}
+{{/layout}}

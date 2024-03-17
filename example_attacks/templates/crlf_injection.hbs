@@ -1,0 +1,26 @@
+{{#> layout }}
+  {{#*inline "content"}}
+   
+    <h1>{{layout.title}}</h1>
+    <div>
+        <i>Цель:  Внедреить в url символ переноса строки. <br>Опасные символы: `U+0026 = %26 = &` и `U+005C = %5C = \ и %0D%0A = \r\n`</i>
+    </div>
+    <div style="border: 2px solid rgb(255, 251, 0); border-radius: 5px; background-color:rgb(222, 135, 215);width: 570px; padding: 10px">
+        <h3>Input example</h3>
+       
+        <b>Message: </b>Bob%0d%0a%0d%0a&lt;script&gt;alert(document.domain)&lt;/script&gt;
+    </div>
+     
+    <br>
+    <form action="/crlf-injection" name="new_msg" target="_self" method="get" enctype="application/x-www-form-urlencoded"> <!-- text/plain application/x-www-form-urlencoded -->
+        Name: <input type="text" name="name" value="Hose" required><br>
+        Message: <input type="text" name="msg" value="" required><br>
+        <button class="button" id="submit">Submit</button>
+    </form>
+
+    New link: <button class="button"><a href="{{redirect_after_login}}" style="color: black;">{{{redirect_after_login}}}</a></button> 
+
+ 
+
+  {{/inline}}
+{{/layout}}
