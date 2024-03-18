@@ -305,6 +305,11 @@ async fn main() -> std::io::Result<()> {
                 .allowed_header(header::CONTENT_TYPE)
                 .max_age(3600) 
             )*/
+            .wrap(
+                // Добавление CSP
+                actix_web::middleware::DefaultHeaders::new()
+                    .add(("Content-Security-Policy", "default-src 'self' http://example.com"))
+            )
             .app_data(web::Data::new(hbars.clone()))
             //.app_data(web::Data::new(pool.clone()))
            // .route("/", web::get().to(index))
