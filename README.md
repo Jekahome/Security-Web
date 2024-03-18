@@ -1,7 +1,7 @@
 # Topics
 
-* [OWASP](https://github.com/Jekahome/Security-Web#OWASP)
-* [Broken User Authentication](https://github.com/Jekahome/Security-Web#broken-user-authentication-broken-access-control)
+* [OWASP](https://github.com/Jekahome/Security-Web#OWASP) 
+* [Broken User Authentication](https://github.com/Jekahome/Security-Web#broken-user-authentication-broken-access-control) (Нарушенная аутентификация пользователя)
 * [Identification and Authentication Failures](https://github.com/Jekahome/Security-Web#identification-and-authentication-failures)
 * [Lack of Resources & Rate Limiting](https://github.com/Jekahome/Security-Web#lack-of-resources--rate-limiting-отсутствие-проверок-и-ограничений)
 * [Broken Object Level Authorization](https://github.com/Jekahome/Security-Web#broken-object-level-authorization-недостатки-контроля-доступа-к-объектам)
