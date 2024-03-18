@@ -1,5 +1,46 @@
+# Topics
 
-# Распространенные уязвимости веб-приложений
+* [OWASP](https://github.com/Jekahome/Security-Web#OWASP)
+* [Broken User Authentication](https://github.com/Jekahome/Security-Web#broken-user-authentication-broken-access-control)
+* [Identification and Authentication Failures](https://github.com/Jekahome/Security-Web#identification-and-authentication-failures)
+* [Lack of Resources & Rate Limiting](https://github.com/Jekahome/Security-Web#lack-of-resources--rate-limiting-отсутствие-проверок-и-ограничений)
+* [Broken Object Level Authorization](https://github.com/Jekahome/Security-Web#broken-object-level-authorization-недостатки-контроля-доступа-к-объектам)
+* [Improper Assets Management](https://github.com/Jekahome/Security-Web#improper-assets-management-недостатки-управления-api)
+* [Broken Function Level Authorization](https://github.com/Jekahome/Security-Web#broken-function-level-authorization-недостатки-контроля-доступа-на-функциональном-уровне)
+* [Cryptographic Failures](https://github.com/Jekahome/Security-Web#cryptographic-failures)
+* [Injection SQL/OS](https://github.com/Jekahome/Security-Web#injection-sqlos-инъекция)
+* [Insecure Design](https://github.com/Jekahome/Security-Web#insecure-design)
+* [Security Misconfiguration](https://github.com/Jekahome/Security-Web#security-misconfiguration-некорректная-настройка-параметров-безопасности)
+* [Vulnerable and Outdated Components](https://github.com/Jekahome/Security-Web#vulnerable-and-outdated-components)
+* [Software and Data Integrity Failures](https://github.com/Jekahome/Security-Web#software-and-data-integrity-failures)
+* [Security Logging and Monitoring Failures](https://github.com/Jekahome/Security-Web#security-logging-and-monitoring-failures)
+* [Incorrect security configuration](https://github.com/Jekahome/Security-Web#incorrect-security-configuration)
+* [Insecure Direct Object References (IDOR)](https://github.com/Jekahome/Security-Web#insecure-direct-object-references-idor)
+* [Используйте стандарт кодирования](https://github.com/Jekahome/Security-Web#используйте-стандарт-кодирования)
+* [Другие распространенные уязвимости: Открытые перенаправления (Open Redirect)](https://github.com/Jekahome/Security-Web#другие-распространенные-уязвимости-открытые-перенаправления-open-redirect)
+* [Другие распространенные уязвимости: Чрезмерное раскрытие данных](https://github.com/Jekahome/Security-Web#другие-распространенные-уязвимости-чрезмерное-раскрытие-данных)
+* [HTTP Parameter Pollution](https://github.com/Jekahome/Security-Web#http-parameter-pollution)
+* [Insecure Cookies and Local Storage](https://github.com/Jekahome/Security-Web#insecure-cookies-and-local-storage-небезопасные-cookies-и-данные-в-local-storage)
+* [CRLF (Carriage Return Line Feed)](https://github.com/Jekahome/Security-Web#crlf-carriage-return-line-feed)
+* [Cross Site Request Forgery (CSRF-атаки)](https://github.com/Jekahome/Security-Web#cross-site-request-forgery-csrf-атаки)
+* [Cross-Site Scripting (XSS) Attacks](https://github.com/Jekahome/Security-Web#cross-site-scripting-xss-attacks)
+* [Subdomain Takeover](https://github.com/Jekahome/Security-Web#subdomain-takeover-захват-поддомена)
+* [Уязвимость XML External Entity](https://github.com/Jekahome/Security-Web#уязвимость-xml-external-entity)
+* [RCE Удаленное выполнение кода](https://github.com/Jekahome/Security-Web#rce-удаленное-выполнение-кода)
+* [Template Injection SSTI](https://github.com/Jekahome/Security-Web#template-injection-ssti-инъекция-в-шаблоны)
+* [Buffer Overflow](https://github.com/Jekahome/Security-Web#память-buffer-overflow-переполнение-буфера)
+* [Защита от атак на отказ в обслуживании (DoS)](https://github.com/Jekahome/Security-Web#защита-от-атак-на-отказ-в-обслуживании-dos)
+* [Authentication](https://github.com/Jekahome/Security-Web#authentication)
+* * [Аутентификация по паролю](https://github.com/Jekahome/Security-Web#аутентификация-по-паролю)
+* * [Аутентификация по сертификатам](https://github.com/Jekahome/Security-Web#аутентификация-по-сертификатам)
+* * [Аутентификация по ключам доступа](https://github.com/Jekahome/Security-Web#аутентификация-по-ключам-доступа)
+* * [Аутентификация по токенам](https://github.com/Jekahome/Security-Web#аутентификация-по-токенам)
+* [Стандарты OAuth и OpenID Connect](https://github.com/Jekahome/Security-Web#стандарты-oauth-и-openid-connect)
+
+
+# OWASP
+
+Распространенные уязвимости веб-приложений
 
 [OWASP](https://www.perforce.com/blog/kw/what-is-owasp-top-10) - Open Web Application Security Project.
 
@@ -60,10 +101,14 @@ Authorization flow:
   - Cookie-Based Authentication подвержена атаке Cross-Site Request Forgeries (CSRF) и, соответственно, необходимо использовать дополнительные механизмы защиты.
   - Можно не хранить сессию пользователя на сервере, а токен проверять каждый раз в Google.
 
-## Identification and Authentication Failures
+## Identification and Authentication Failures (Сбои в идентификации и аутентификации)
 
 Функции приложения аутентификации и управления сеансом должны быть реализованы правильно. 
 В противном случае это создает уязвимость программного обеспечения, которую могут использовать ненадежные агенты для получения доступа к личной информации.
+
+`Идентификация` (Identification): Это процесс определения, кто или что пытается получить доступ к системе или ресурсам. В ходе идентификации пользователь предоставляет системе учетные данные или иные идентификационные атрибуты, которые могут быть использованы для определения его личности или статуса.
+
+`Аутентификация` (Authentication): Это процесс проверки подлинности предоставленных идентификационных данных. В ходе аутентификации система проверяет, действительно ли предоставленные учетные данные соответствуют идентифицированному субъекту и имеют ли они право на доступ.
 
 ## Lack of Resources & Rate Limiting (Отсутствие проверок и ограничений)
 
