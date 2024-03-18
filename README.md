@@ -1054,26 +1054,19 @@ Authorization flow
  
 [Auth2.0 использует кнопки сой. сетей для входа,а OpenID Connect (OIDC) расгиряет и использует поле sub как ID можно посмотрель профиль польщователя](https://www.youtube.com/watch?v=kRJ4Xx4jEBk)
 
-
- 
 # ... security
 
 * Public Key Cryptography
 * Hashing/Encryption/Encoding
 * Hashing Algorithms
- 
- 
-WEB Security Knowledge: MD5 not used, SHA Family, scrypt,bcrypt, CORS, HTTPS,SSL/TLS,Content Security Policy
-
-RBAC, XSS, DDOS, CSRF, CSP, RATE LIMITING, SQL injections  https://backendinterview.ru/ib.html
-Broken authentication
-В идеале, в проекте должен быть манифест, который регулирует security политику
-Про UEBA в безопасности
-про Cross Browser Fingerprint
-Phishing Detection
-DGA, OWASP
- 
-  
+* WEB Security Knowledge: MD5 not used, SHA Family, scrypt,bcrypt, CORS, HTTPS,SSL/TLS,Content Security Policy
+* RBAC, XSS, DDOS, CSRF, CSP, RATE LIMITING, SQL injections  https://backendinterview.ru/ib.html
+* Broken authentication
+* В идеале, в проекте должен быть манифест, который регулирует security политику
+* Про UEBA в безопасности
+* про Cross Browser Fingerprint
+* Phishing Detection
+* DGA, OWASP
  
 ```
 Существует несколько замечательных книг и статей на тему того, как сделать приложение безопасным:
