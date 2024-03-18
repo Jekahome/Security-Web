@@ -1283,3 +1283,5 @@ Content-Type: text/html
 [Какие инструменты применяют для поиска уязвимостей](https://skillbox.ru/media/code/gayd-po-kiberbezopasnosti-dlya-razrabotchikov-i-nachinayushchikh-spetsialistov/)
 
 [Вещи, которые всегда нужно держать в уме, если вы хотите создать безопасное приложение:](https://tproger.ru/explain/what-programmers-should-know-about-security)
+
+[Practical Rust Web Development - Authentication](https://dev.to/werner/practical-rust-web-development-authentication-3ppg)
