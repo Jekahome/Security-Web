@@ -27,7 +27,9 @@ actix-web-flash-messages = { version = "0.4", features = ["sessions"] }
 argon2 = "0.5"
 rand = "0.8"
 actix-web-lab = "0.20"
- 
+# csrf-token = { git = "ssh://git@github.com/3dom-co-jp/csrf-token.git", branch="v0.2.x" }
+csrf = "0.4"
+hex = "0.4"
 
 # dependencies specific to Auth password
 actix-web-httpauth = "0.8"

@@ -419,6 +419,7 @@ async fn favicon() -> actix_web::Result<NamedFile> {
     Ok(NamedFile::open("authentication_password/static_files/favicon.ico")?)
 }
 
+
 /*
 
 --------------------
@@ -517,6 +518,11 @@ async fn main() -> std::io::Result<()> {
                 .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
                 .allowed_header(header::CONTENT_TYPE)
                 .max_age(3600) 
+            )
+            .wrap(
+                // Добавление CSP
+                actix_web::middleware::DefaultHeaders::new()
+                    .add(("Content-Security-Policy", "default-src 'self' http://127.0.0.1"))
             )
             .app_data(web::Data::new(hbars.clone()))
             .app_data(web::Data::new(pool.clone()))

@@ -214,6 +214,7 @@ async fn basic_auth(db: web::Data<Pool>, credentials: BasicAuth) -> impl Respond
                     if is_valid {
                         let claims = TokenClaims{id: user.id};
                         let token_str = claims.sign_with_key(&jwt_secret).unwrap();
+                        // Finally our response will have a csrf token for security. 
                         HttpResponse::Ok().json(token_str)
                     }else{
                         HttpResponse::Unauthorized().json("Incorrect username or password")
@@ -302,6 +303,7 @@ async fn validator(req: actix_web::dev::ServiceRequest, credentials: BearerAuth)
     }
 }
 
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     std::env::set_var("RUST_LOG", "info");
@@ -328,6 +330,7 @@ async fn main() -> std::io::Result<()> {
         .unwrap();
     builder.set_certificate_chain_file("authentication_api_password/cert/cert.pem").unwrap();
 
+   
     HttpServer::new(move || {   
         let prometheus = PrometheusMetricsBuilder::new("api").endpoint("/metrics").build().unwrap();
         let bearer_middleware = HttpAuthentication::bearer(validator);
@@ -373,6 +376,7 @@ async fn main() -> std::io::Result<()> {
             )
             .app_data(hbars_ref.clone())
             .app_data(web::Data::new(pool.clone()))
+
             .service(basic_auth)
             .service(index) 
             .service(create_user)
@@ -392,7 +396,11 @@ async fn main() -> std::io::Result<()> {
                     .use_last_modified(true)
                     .prefer_utf8(true),
             )
-            
+            .wrap(
+                // Добавление CSP
+                actix_web::middleware::DefaultHeaders::new()
+                    .add(("Content-Security-Policy", "default-src 'self' http://127.0.0.1"))
+            )
             .default_service(web::route().guard(guard::Not(guard::Get())).to(HttpResponse::MethodNotAllowed))
     })
     .workers(4) 
