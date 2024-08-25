@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "./authentication_password_jwt/Cargo.toml"
+    ]
+}
