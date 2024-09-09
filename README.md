@@ -1220,7 +1220,7 @@ Authorization flow
 * Hashing/Encryption/Encoding
 * Hashing Algorithms
 * WEB Security Knowledge: MD5 not used, SHA Family, scrypt,bcrypt, CORS, HTTPS,SSL/TLS 
-* RBAC https://backendinterview.ru/ib.html
+* RBAC https://backendinterview.ru/ib.html и [Изучение различий между режимами авторизации RBAC, CBAC, PBAC и ABAC](https://levelup.gitconnected.com/from-roles-to-attributes-comparing-authorization-models-94e670016e4e)
 * В идеале, в проекте должен быть манифест, который регулирует security политику
 * Про UEBA в безопасности
 * про Cross Browser Fingerprint
