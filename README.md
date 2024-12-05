@@ -37,6 +37,13 @@
 * * [Аутентификация по токенам](https://github.com/Jekahome/Security-Web#аутентификация-по-токенам)
 * [Стандарты OAuth и OpenID Connect](https://github.com/Jekahome/Security-Web#стандарты-oauth-и-openid-connect)
 
+--- 
+
+[Secure Rust Guidelines](https://anssi-fr.github.io/rust-guide/01_introduction.html) цель данного документа — собрать советы и рекомендации, 
+которые позволят вам оставаться в безопасной зоне для разработки безопасных приложений, 
+используя при этом весь спектр возможностей, которые может предложить язык Rust.
+
+---
 
 # OWASP
 
