@@ -1,14 +1,16 @@
-.PHONY: all
+.PHONY: all commit clean
 
-# Определите цель all
 all: commit
 
-# Определите цель commit, чтобы делать коммит и пуш
 commit:
-	git add . && \
-	git commit -m "Fmt" && \
-	git push
+	@if ! git diff-index --quiet HEAD --; then \
+		echo ">>> Обнаружены изменения, делаю коммит..."; \
+		git add .; \
+		git commit --allow-empty-message -m ""; \
+		git push; \
+	else \
+		echo ">>> Нет изменений для коммита."; \
+	fi
 
-# Определите цель clean для очищения потенциальных временных файлов (если это актуально)
 clean:
 	git clean -fd
